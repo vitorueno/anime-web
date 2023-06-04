@@ -12,7 +12,7 @@ const studioSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    animeProductions: [{
+    animes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Anime'
     }]

@@ -1,8 +1,8 @@
 const Anime = require("../models/Anime");
+const Studio = require("../models/Studio");
 
 const getAnimes = async (req, res) => {
-    /* #swagger.description = 'retorna todos os animes cadastradas'
-    #swagger.tags = ['Anime'] */
+    /* #swagger.description = 'retorna todos os animes cadastradas' #swagger.tags = ['Anime'] */
 
     const page = parseInt(req.query.page) || 1; // Current page number
     const limit = parseInt(req.query.limit) || 10; // Number of results per page
@@ -14,7 +14,7 @@ const getAnimes = async (req, res) => {
         const skip = (page - 1) * limit;
 
         // Query the database for the paginated results
-        const animes = await Anime.find().skip(skip).limit(limit);
+        const animes = await Anime.find().populate('studio').skip(skip).limit(limit);
 
         res.status(200).json({
             total,
@@ -31,7 +31,7 @@ const getSpecificAnime = async (req, res) => {
     /* #swagger.description = 'retorna os dados de um anime específico (ID do Mongo)'
       #swagger.tags = ['Anime'] */
     try {
-        const anime = await Anime.findById(req.params.animeID);
+        const anime = await Anime.findById(req.params.animeID).populate('studio');
         res.status(200).json(anime);
     } catch (error) {
         res.status(400).json({ error });
@@ -48,35 +48,39 @@ const createAnime = async (req, res) => {
          required: true,
          schema: { $ref: "#/definitions/Anime" }
        } */
-    const {
-        title,
-        synopsis,
-        studio,
-        genres,
-        numEpisodes,
-        releaseDate,
-        endDate,
-        source,
-        demographic
-    } = req.body;
-
-    const anime = new Anime({
-        title,
-        synopsis,
-        studio,
-        genres,
-        numEpisodes,
-        releaseDate,
-        endDate,
-        source,
-        demographic
-    });
-
     try {
+        const {
+            title,
+            synopsis,
+            studio,
+            genres,
+            numEpisodes,
+            releaseDate,
+            endDate,
+            source,
+            demographic
+        } = req.body;
+
+        const anime = new Anime({
+            title,
+            synopsis,
+            studio,
+            genres,
+            numEpisodes,
+            releaseDate,
+            endDate,
+            source,
+            demographic
+        });
+
         const savedAnime = await anime.save();
+        const animeStudio = await Studio.findById(savedAnime.studio);
+        animeStudio.animes.push(savedAnime._id);
+        await animeStudio.save();
+
         res.status(201).json(savedAnime);
     } catch (error) {
-        res.status(400).json({ error });
+        res.status(400).json(error);
     }
 };
 

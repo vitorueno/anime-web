@@ -1,4 +1,5 @@
 const Studio = require('../models/Studio');
+const Anime = require('../models/Anime');
 
 const createStudio = async (req, res) => {
     /*#swagger.description = 'cadastra um estudio com os dados do corpo da requisição'
@@ -23,7 +24,7 @@ const getAllStudios = async (req, res) => {
     /* #swagger.description = 'retorna todos os estudios cadastradas'
     #swagger.tags = ['Studio'] */
     try {
-        const studios = await Studio.find();
+        const studios = await Studio.find().populate('animes');
         res.json(studios);
     } catch (error) {
         res.status(500).json({ error });
@@ -34,7 +35,7 @@ const getSpecificStudio = async (req, res) => {
     /* #swagger.description = 'retorna os dados de um estudio específico (ID do Mongo)'
      #swagger.tags = ['Studio'] */
     try {
-        const studio = await Studio.findById(req.params.studioID);
+        const studio = await Studio.findById(req.params.studioID).populate('animes');
         res.status(200).json(studio);
     } catch (error) {
         res.status(400).json({ error });

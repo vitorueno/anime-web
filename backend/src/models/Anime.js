@@ -6,10 +6,10 @@ const animeSchema = mongoose.Schema({
         required: true
     },
     synopsis: String,
-    studios: [{
+    studio: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Studio'
-    }],
+        ref: 'Studio',
+    },
     genres: [String],
     numEpisodes: {
         type: Number,

@@ -1,4 +1,5 @@
 const Anime = require("../models/Anime");
+const Genre = require("../models/Genre");
 const Studio = require("../models/Studio");
 
 const getAnimes = async (req, res) => {
@@ -14,7 +15,7 @@ const getAnimes = async (req, res) => {
         const skip = (page - 1) * limit;
 
         // Query the database for the paginated results
-        const animes = await Anime.find().populate('studio').skip(skip).limit(limit);
+        const animes = await Anime.find().populate('studio').populate('genres').skip(skip).limit(limit);
 
         res.status(200).json({
             total,
@@ -31,7 +32,7 @@ const getSpecificAnime = async (req, res) => {
     /* #swagger.description = 'retorna os dados de um anime específico (ID do Mongo)'
       #swagger.tags = ['Anime'] */
     try {
-        const anime = await Anime.findById(req.params.animeID).populate('studio');
+        const anime = await Anime.findById(req.params.animeID).populate('studio').populate('genres');
         res.status(200).json(anime);
     } catch (error) {
         res.status(400).json({ error });

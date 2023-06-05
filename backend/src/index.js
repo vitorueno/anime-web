@@ -11,9 +11,11 @@ app.use(cors());
 const animeRoute = require('./routes/anime');
 const docRoute = require('./routes/doc');
 const studioRoute = require('./routes/studio');
+const genreRoute = require('./routes/genre');
 
 app.use('/anime', animeRoute);
 app.use('/studio', studioRoute);
+app.use('/genre', genreRoute);
 app.use('/doc', docRoute);
 
 

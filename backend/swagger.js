@@ -12,6 +12,10 @@ const doc = {
         {
             "name": "Studio",
             "description": "Studio Endpoints"
+        },
+        {
+            "name": "Genre",
+            "description": "Genre Endpoints"
         }
     ],
     definitions: {
@@ -30,6 +34,10 @@ const doc = {
             name: 'Bones',
             description: 'Bones (Bones Inc.) is a Japanese animation studio based in Suginami, Tokyo. The studio was founded by previous Sunrise producer Masahiko Minami and animators Hiroshi Ousaka and Toshihiro Kawamoto in 1998. Following Sunrise\'s production model, Bones\' founders divided the company into five smaller studios, Studio A-E. Studio Bones has put out a variety of television and film since its debut project of Hiwou War Chronicles in 2000, including popular anime such as Ouran Koukou Host Club(Ouran High School Host Club), Hagane no Renkinjutsushi: Fullmetal Alchemist(Fullmetal Alchemist: Brotherhood), Boku no Hero Academia(My Hero Academia), and Bungou Stray Dogs',
             foundationDate: '1998-10-01'
+        },
+        Genre: {
+            title: 'Action',
+            description: 'fast-paced, adrenaline-fueled action scenes'
         }
     }
 }

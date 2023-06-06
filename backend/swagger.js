@@ -16,6 +16,10 @@ const doc = {
         {
             "name": "Genre",
             "description": "Genre Endpoints"
+        },
+        {
+            "name": "User",
+            "description": "User Endpoints"
         }
     ],
     definitions: {
@@ -38,6 +42,11 @@ const doc = {
         Genre: {
             title: 'Action',
             description: 'fast-paced, adrenaline-fueled action scenes'
+        },
+        User: {
+            name: 'Joãozinho Gamer',
+            email: 'joaozinho.gamer@games.com',
+            password: 'segredo'
         }
     }
 }

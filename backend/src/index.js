@@ -9,14 +9,16 @@ app.use(cors());
 
 // routes
 const animeRoute = require('./routes/anime');
-const docRoute = require('./routes/doc');
+// const docRoute = require('./routes/doc');
 const studioRoute = require('./routes/studio');
 const genreRoute = require('./routes/genre');
+const userRoute = require('./routes/user');
 
 app.use('/anime', animeRoute);
 app.use('/studio', studioRoute);
 app.use('/genre', genreRoute);
-app.use('/doc', docRoute);
+app.use('/user', userRoute);
+// app.use('/doc', docRoute);
 
 
 // database connection
@@ -28,7 +30,7 @@ require('dotenv').config();
 // default option if not using the .env file
 const PORT = 3000 || process.env.PORT; // default port
 const CONNECTION_STRING = '' || process.env.MONGO_CONNECTION_STRING; // write your connection string here
-
+console.log(CONNECTION_STRING)
 const connectToDatabase = async () => {
     try {
         const connection = await mongoose.connect(CONNECTION_STRING);

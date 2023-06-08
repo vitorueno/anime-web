@@ -14,12 +14,16 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
-        select: false
+        // select: false
     },
     admin: {
         type: Boolean,
         default: false
-    }
+    },
+    tokens: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'RefreshToken'
+    }]
 });
 
 UserSchema.pre('save', function (next) {
@@ -42,11 +46,8 @@ UserSchema.pre('save', function (next) {
     });
 });
 
-UserSchema.methods.comparePassword = function (candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
-    });
+UserSchema.methods.comparePassword = function (candidatePassword) {
+    return bcrypt.compareSync(candidatePassword, this.password);
 };
 
 module.exports = mongoose.model('User', UserSchema);

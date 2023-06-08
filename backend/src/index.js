@@ -14,6 +14,8 @@ const studioRoute = require('./routes/studio');
 const genreRoute = require('./routes/genre');
 const userRoute = require('./routes/user');
 const listRoute = require('./routes/list');
+const authRoute = require('./routes/auth');
+
 
 app.use('/anime', animeRoute);
 app.use('/studio', studioRoute);
@@ -21,6 +23,8 @@ app.use('/genre', genreRoute);
 app.use('/doc', docRoute);
 app.use('/user', userRoute);
 app.use('/list', listRoute);
+app.use('/auth', authRoute);
+
 
 // database connection
 const mongoose = require('mongoose');

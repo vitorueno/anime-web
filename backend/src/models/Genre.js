@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const genreSchema = mongoose.Schema({
+const GenreSchema = mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -8,4 +8,4 @@ const genreSchema = mongoose.Schema({
     description: String
 });
 
-module.exports = mongoose.model('Genre', genreSchema);
+module.exports = mongoose.model('Genre', GenreSchema);

@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 
-const studioSchema = mongoose.Schema({
+const StudioSchema = mongoose.Schema({
     name: {
         type: String,
         unique: true,
@@ -18,4 +18,4 @@ const studioSchema = mongoose.Schema({
     }]
 });
 
-module.exports = mongoose.model('Studio', studioSchema);
+module.exports = mongoose.model('Studio', StudioSchema);

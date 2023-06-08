@@ -20,6 +20,10 @@ const doc = {
         {
             "name": "User",
             "description": "User Endpoints"
+        },
+        {
+            "name": "List",
+            "description": "List Endpoints"
         }
     ],
     definitions: {
@@ -47,12 +51,20 @@ const doc = {
             name: 'Joãozinho Gamer',
             email: 'joaozinho.gamer@games.com',
             password: 'segredo'
+        },
+        List: {
+            title: 'Meus animes favoritos',
+            description: 'A lista dos meus animes favoritos',
+            user: 'ID VALIDO DE USUÁRIO'
+        },
+        ChangeList: {
+            animeIDS: [
+                'ID anime 1',
+                'ID anime 2'
+            ]
         }
     }
 }
 
 
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-    console.log('criando documentação');
-    require('./src/index.js');
-})
+swaggerAutogen(outputFile, endpointsFiles, doc);

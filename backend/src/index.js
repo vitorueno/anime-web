@@ -13,12 +13,14 @@ const docRoute = require('./routes/doc');
 const studioRoute = require('./routes/studio');
 const genreRoute = require('./routes/genre');
 const userRoute = require('./routes/user');
+const listRoute = require('./routes/list');
 
 app.use('/anime', animeRoute);
 app.use('/studio', studioRoute);
 app.use('/genre', genreRoute);
 app.use('/doc', docRoute);
 app.use('/user', userRoute);
+app.use('/list', listRoute);
 
 // database connection
 const mongoose = require('mongoose');

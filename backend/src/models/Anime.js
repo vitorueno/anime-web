@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const animeSchema = mongoose.Schema({
+const AnimeSchema = mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -30,4 +30,4 @@ const animeSchema = mongoose.Schema({
     demographic: String
 });
 
-module.exports = mongoose.model('Anime', animeSchema);
+module.exports = mongoose.model('Anime', AnimeSchema);

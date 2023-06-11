@@ -32,7 +32,7 @@ async function createRefreshToken(id, admin) {
 
 
 
-        return savedRefreshToken;
+        return savedRefreshToken.token;
     } catch (error) {
         console.log(error)
     }

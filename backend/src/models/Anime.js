@@ -27,6 +27,7 @@ const AnimeSchema = mongoose.Schema({
         default: Date.now()
     },
     source: String,
+    image: String,
     demographic: String
 });
 

@@ -23,11 +23,26 @@ const createStudio = async (req, res) => {
 const getAllStudios = async (req, res) => {
     /* #swagger.description = 'retorna todos os estudios cadastradas'
     #swagger.tags = ['Studio'] */
+    const page = parseInt(req.query.page) || 1; // Current page number
+    const limit = parseInt(req.query.limit) || 10; // Number of results per page
+
     try {
-        const studios = await Studio.find().populate('animes');
-        res.json(studios);
+        const total = await Studio.countDocuments();
+
+        // Calculate the number of skip documents based on the page and limit
+        const skip = (page - 1) * limit;
+
+        // Query the database for the paginated results
+        const studios = await Studio.find().populate('animes').skip(skip).limit(limit);
+
+        res.status(200).json({
+            total,
+            page,
+            limit,
+            results: studios
+        });
     } catch (error) {
-        res.status(500).json({ error });
+        res.status(400).json({ error });
     }
 };
 

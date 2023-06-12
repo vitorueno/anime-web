@@ -36,7 +36,8 @@ const doc = {
             releaseDate: '2009-04-05',
             endDate: '2010-07-04',
             source: 'Manga',
-            demographic: 'Shounen'
+            demographic: 'Shounen',
+            image: 'LINK TO IMAGE'
         },
         Studio: {
             name: 'Bones',

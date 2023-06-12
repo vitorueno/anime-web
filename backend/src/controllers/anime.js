@@ -59,7 +59,8 @@ const createAnime = async (req, res) => {
             releaseDate,
             endDate,
             source,
-            demographic
+            demographic,
+            image
         } = req.body;
 
         const anime = new Anime({
@@ -71,7 +72,8 @@ const createAnime = async (req, res) => {
             releaseDate,
             endDate,
             source,
-            demographic
+            demographic,
+            image
         });
 
         const savedAnime = await anime.save();

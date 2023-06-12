@@ -1,5 +1,5 @@
 
-export default function listas() {
+export default function Listas() {
     return (
         <>
             <h1>Listas</h1>

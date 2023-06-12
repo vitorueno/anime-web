@@ -100,7 +100,7 @@ export default function withAction() {
 
                             <Button
                                 variant={'solid'}
-                                colorScheme={'teal'}
+                                colorScheme={'red'}
                                 size={'sm'}
                                 mr={4}
                                 leftIcon={<AddIcon />}>

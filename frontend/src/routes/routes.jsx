@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MyNavbar from '../components/MyNavbar'
 import Footer from '../components/Footer'
-import anime from '../pages/anime';
-import genero from '../pages/genero';
-import estudio from '../pages/estudio'
-import listas from '../pages/listas';
-import login from '../pages/login'
-import cadastrar from '../pages/cadastrar'
+import Anime from '../pages/anime';
+import Genero from '../pages/genero';
+import Estudio from '../pages/estudio'
+import Listas from '../pages/listas';
+import Login from '../pages/login'
+import Cadastrar from '../pages/cadastrar'
 
 export default function MyRoutes() {
     return (
@@ -14,13 +14,13 @@ export default function MyRoutes() {
             <BrowserRouter>
                 <MyNavbar />
                 <Routes>
-                    <Route exact path="/" Component={anime} />
-                    <Route exact path="/anime" Component={anime} />
-                    <Route path="/genero" Component={genero} />
-                    <Route path="/estudio" Component={estudio} />
-                    <Route path="/listas" Component={listas} />
-                    <Route path="/login" Component={login} />
-                    <Route path="/cadastrar" Component={cadastrar} />
+                    <Route exact path="/" Component={Anime} />
+                    <Route exact path="/anime" Component={Anime} />
+                    <Route path="/genero" Component={Genero} />
+                    <Route path="/estudio" Component={Estudio} />
+                    <Route path="/listas" Component={Listas} />
+                    <Route path="/login" Component={Login} />
+                    <Route path="/cadastrar" Component={Cadastrar} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

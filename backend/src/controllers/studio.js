@@ -58,9 +58,42 @@ const getSpecificStudio = async (req, res) => {
 
 }
 
+const updateSpecificStudio = async (req, res) => {
+    /* #swagger.description = 'substitui as informações do estudio com ID informado pelos dados do corpo' 
+         #swagger.tags = ['Studio']
+         #swagger.parameters['obj'] = {
+              in: 'body',
+              description: 'Informação do Estudio',
+              required: true,
+              schema: { $ref: "#/definitions/Studio" }
+          }  */
+    try {
+        const updatedStudio = await Studio.findOneAndUpdate(
+            { _id: req.params.studioID },
+            req.body
+        );
+        res.status(200).json(updatedStudio);
+    } catch (error) {
+        res.status(400).json({ error });
+    }
+}
 
+const deleteSpecificStudio = async (req, res) => {
+    /* #swagger.description = 'remove um Estúdio pelo ID do Mongo'
+      #swagger.tags = ['Studio'] */
+    try {
+        const removedStudio = await Studio.findOneAndDelete({
+            _id: req.params.studioID,
+        });
+        res.status(200).json(removedStudio);
+    } catch (error) {
+        res.status(400).json({ error });
+    }
+};
 module.exports = {
     createStudio,
     getAllStudios,
-    getSpecificStudio
+    getSpecificStudio,
+    deleteSpecificStudio,
+    updateSpecificStudio
 }

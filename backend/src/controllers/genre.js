@@ -84,7 +84,7 @@ const updateSpecificGenre = async (req, res) => {
           }  */
     try {
         const updatedGenre = await Genre.findOneAndUpdate(
-            req.params.genreID,
+            { _id: req.params.genreID },
             req.body
         );
         res.status(200).json(updatedGenre);

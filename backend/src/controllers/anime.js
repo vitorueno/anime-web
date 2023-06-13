@@ -78,11 +78,13 @@ const createAnime = async (req, res) => {
 
         const savedAnime = await anime.save();
         const animeStudio = await Studio.findById(savedAnime.studio);
+        console.log(animeStudio, savedAnime.studio, studio)
         animeStudio.animes.push(savedAnime._id);
         await animeStudio.save();
 
         res.status(201).json(savedAnime);
     } catch (error) {
+        console.log(error)
         res.status(400).json(error);
     }
 };
@@ -112,7 +114,7 @@ const updateSpecificAnime = async (req, res) => {
           }  */
     try {
         const updatedAnime = await Anime.findOneAndUpdate(
-            req.params.animeID,
+            { _id: req.params.animeID },
             req.body
         );
         res.status(200).json(updatedAnime);

@@ -26,26 +26,6 @@ import { useState } from 'react';
 
 import { FaUserCircle } from 'react-icons/fa'
 
-// import { Link } from 'react-router-dom';
-
-// const Links = ['Anime', 'Gêneros', 'Estúdios', 'Listas'];
-
-// const NavLink = ({ children, linkTo }) => (
-//     <Link
-//         px={2}
-//         py={1}
-//         rounded={'md'}
-//         _hover={{
-//             textDecoration: 'none',
-//             bg: useColorModeValue('gray.200', 'gray.700'),
-//         }}
-//         href={linkTo} >
-//         {children}
-//     </Link >
-
-
-// );
-
 export default function withAction() {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -55,6 +35,7 @@ export default function withAction() {
         localStorage.removeItem("access-token")
         localStorage.removeItem("refresh-token")
         setToken('')
+        window.location.reload()
     }
 
 
@@ -87,25 +68,12 @@ export default function withAction() {
                             <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='estudio'>
                                 Estudios
                             </Link >
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='listas'>
-                                Listas
-                            </Link >
-                            {/* {Links.map((link) => (
-                                <NavLink key={link}>{link}</NavLink>
-                            ))} */}
                         </HStack>
                     </HStack>
                     <Flex alignItems={'center'}>
                         {token ? <>
 
-                            <Button
-                                variant={'solid'}
-                                colorScheme={'red'}
-                                size={'sm'}
-                                mr={4}
-                                leftIcon={<AddIcon />}>
-                                Action
-                            </Button>
+
 
                             <Menu>
                                 <MenuButton
@@ -120,9 +88,7 @@ export default function withAction() {
 
                                 </MenuButton>
                                 <MenuList>
-                                    {/* <MenuItem>Link 1</MenuItem>
-                                    <MenuItem>Link 2</MenuItem> 
-                                    <MenuDivider /> */}
+
                                     <MenuItem onClick={logOut}>LogOut</MenuItem>
                                 </MenuList>
                             </Menu>
@@ -146,7 +112,7 @@ export default function withAction() {
                                     fontSize={'sm'}
                                     fontWeight={600}
                                     color={'white'}
-                                    bg={'pink.400'}
+                                    colorScheme='red'
                                     href={'cadastrar'}
                                     _hover={{
                                         bg: 'pink.300',
@@ -177,15 +143,13 @@ export default function withAction() {
                             <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='listas'>
                                 Listas
                             </Link >
-                            {/* {Links.map((link) => (
-                                <NavLink key={link} linkTo='genero'>{link}</NavLink>
-                            ))} */}
+
                         </Stack>
                     </Box>
                 ) : null}
             </Box>
 
-            {/* <Box p={4}>Main Content Here</Box> */}
+
         </>
     );
 }

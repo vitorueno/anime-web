@@ -1,17 +1,12 @@
 import MyCard from '../components/MyCard';
-import { SimpleGrid } from '@chakra-ui/react'
 import { api } from "../services/api"
 import { useEffect, useState } from 'react';
 import {
-    Card,
     Heading,
-    CardBody,
-    CardFooter,
     Text,
     Image,
-    Divider,
     Stack,
-    ButtonGroup,
+    Box,
     Button,
     Flex,
     useDisclosure,
@@ -24,6 +19,13 @@ import {
     Alert,
     AlertIcon,
     Select,
+    Accordion,
+    AccordionButton,
+    AccordionIcon,
+    AccordionItem,
+    AccordionPanel,
+    SimpleGrid,
+    Center
 } from '@chakra-ui/react'
 
 import {
@@ -259,13 +261,27 @@ export default function Anime() {
                 {
                     animes.map((anime, i) => {
                         return <MyCard key={i} objeto={anime} entidade="anime" setIsUpdate={setIsUpdate}>
-                            <Image
-                                src={anime.image}
-                                borderRadius='lg'
-                            />
+                            <Center>
+                                <Image src={anime.image} borderRadius='lg' />
+                            </Center>
+
                             <Stack mt='6' spacing='3'>
                                 <Heading size='md' color="red.400">{anime.title}</Heading>
-                                <Text>{anime.synopsis}</Text>
+                                {anime.synopsis &&
+                                    <Accordion allowMultiple>
+                                        <AccordionItem>
+                                            <AccordionButton>
+                                                <Box as="span" flex='1' textAlign='left'>
+                                                    Sinopse
+                                                </Box>
+                                                <AccordionIcon />
+                                            </AccordionButton>
+                                            <AccordionPanel pb={4}>
+                                                <Text>{anime.synopsis}</Text>
+                                            </AccordionPanel>
+                                        </AccordionItem>
+                                    </Accordion>
+                                }
                                 <Text>Episódios: {anime.numEpisodes}</Text>
                                 <Text>Gêneros: {anime.genres.map(genero => genero.title)}</Text>
                                 <Text>Estúdio: {anime.studio?.name}</Text>

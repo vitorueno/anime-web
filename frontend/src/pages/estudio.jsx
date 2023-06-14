@@ -13,7 +13,13 @@ import {
     AlertIcon,
     FormControl,
     Input,
-    FormLabel
+    FormLabel,
+    Accordion,
+    AccordionIcon,
+    AccordionPanel,
+    AccordionItem,
+    AccordionButton,
+    Box
 } from '@chakra-ui/react'
 import {
     Paginator,
@@ -145,7 +151,21 @@ export default function Estudio() {
                         return <MyCard key={i} objeto={estudio} entidade='studio' setIsUpdate={setIsUpdate}>
                             <Stack mt='6' spacing='3'>
                                 <Heading size='md' color="red.400">{estudio.name}</Heading>
-                                <Text>{estudio.description}</Text>
+                                {estudio.description &&
+                                    <Accordion allowMultiple>
+                                        <AccordionItem>
+                                            <AccordionButton>
+                                                <Box as="span" flex='1' textAlign='left'>
+                                                    Descrição
+                                                </Box>
+                                                <AccordionIcon />
+                                            </AccordionButton>
+                                            <AccordionPanel pb={4}>
+                                                <Text>{estudio.description}</Text>
+                                            </AccordionPanel>
+                                        </AccordionItem>
+                                    </Accordion>
+                                }
                                 <Text>Fundado em: {convertDate(estudio.foundationDate)}</Text>
                             </Stack>
                         </MyCard>

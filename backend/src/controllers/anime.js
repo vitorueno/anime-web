@@ -78,7 +78,6 @@ const createAnime = async (req, res) => {
 
         const savedAnime = await anime.save();
         const animeStudio = await Studio.findById(savedAnime.studio);
-        console.log(animeStudio, savedAnime.studio, studio)
         animeStudio.animes.push(savedAnime._id);
         await animeStudio.save();
 

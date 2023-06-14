@@ -13,7 +13,13 @@ import {
     Input,
     FormLabel,
     Alert,
-    AlertIcon
+    AlertIcon,
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    Box,
+    AccordionIcon
 } from '@chakra-ui/react'
 
 import {
@@ -114,10 +120,24 @@ export default function Genero() {
             <SimpleGrid spacing={10} padding={10} columns={5} minH='90vh'>
                 {
                     generos.map((genero, i) => {
-                        return <MyCard key={i} objeto={genero} maxH='30vh' entidade='genre' setIsUpdate={setIsUpdate}>
+                        return <MyCard key={i} objeto={genero} entidade='genre' setIsUpdate={setIsUpdate}>
                             <Stack mt='6' spacing='3'>
                                 <Heading size='md' color="red.400">{genero.title}</Heading>
-                                <Text>{genero.description}</Text>
+                                {genero.description &&
+                                    <Accordion allowMultiple>
+                                        <AccordionItem>
+                                            <AccordionButton>
+                                                <Box as="span" flex='1' textAlign='left'>
+                                                    Descrição
+                                                </Box>
+                                                <AccordionIcon />
+                                            </AccordionButton>
+                                            <AccordionPanel pb={4}>
+                                                <Text>{genero.description}</Text>
+                                            </AccordionPanel>
+                                        </AccordionItem>
+                                    </Accordion>
+                                }
                             </Stack>
                         </MyCard>
                     })

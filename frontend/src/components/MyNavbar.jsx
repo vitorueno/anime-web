@@ -1,32 +1,37 @@
-import { ReactNode } from 'react';
+import { useState } from 'react';
+
+import {
+    NavLink,
+    useNavigate
+} from 'react-router-dom'
+
 import {
     Box,
     Flex,
-    Avatar,
     HStack,
-    Link,
     IconButton,
     Button,
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
-    MenuDivider,
     useDisclosure,
     useColorModeValue,
     Stack,
-    Image
+    Image,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, AddIcon } from '@chakra-ui/icons';
 
 import ColorModeToggle from './ColorMode';
 
-import logo from '../assets/anime.png';
-import { useState } from 'react';
-
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { FaUserCircle } from 'react-icons/fa'
+import logo from '../assets/anime.png';
+
+
 
 export default function withAction() {
+    const navigate = useNavigate();
+
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const [token, setToken] = useState(localStorage.getItem('access-token'));
@@ -59,15 +64,21 @@ export default function withAction() {
                             as={'nav'}
                             spacing={4}
                             display={{ base: 'none', md: 'flex' }}>
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='anime'>
-                                Anime
-                            </Link >
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='genero'>
-                                Gêneros
-                            </Link >
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='estudio'>
-                                Estudios
-                            </Link >
+                            <NavLink to='/anime'>
+                                <Box px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }}>
+                                    Anime
+                                </Box>
+                            </NavLink >
+                            <NavLink to='/genero'>
+                                <Box px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }}>
+                                    Gêneros
+                                </Box>
+                            </NavLink >
+                            <NavLink to='/estudio'>
+                                <Box px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }}>
+                                    Estudios
+                                </Box>
+                            </NavLink >
                         </HStack>
                     </HStack>
                     <Flex alignItems={'center'}>
@@ -131,19 +142,21 @@ export default function withAction() {
                 {isOpen ? (
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='anime'>
-                                Anime
-                            </Link >
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='genero'>
-                                Gêneros
-                            </Link >
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='estudio'>
-                                Estudios
-                            </Link >
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }} href='listas'>
-                                Listas
-                            </Link >
-
+                            <NavLink to='/anime'>
+                                <Box px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }}>
+                                    Anime
+                                </Box>
+                            </NavLink >
+                            <NavLink to='/genero'>
+                                <Box px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }}>
+                                    Gêneros
+                                </Box>
+                            </NavLink >
+                            <NavLink to='/estudio'>
+                                <Box px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700'), }}>
+                                    Estudios
+                                </Box>
+                            </NavLink >
                         </Stack>
                     </Box>
                 ) : null}

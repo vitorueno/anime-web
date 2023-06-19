@@ -145,7 +145,7 @@ export default function Genero() {
 
             </SimpleGrid>
 
-            <MyModal title={'Cadastrar Anime'} action={'cadastrar'} isOpen={isOpen} onClose={onClose} onSubmit={enviarDados}>
+            <MyModal title={'Gênero'} action={'cadastrar'} isOpen={isOpen} onClose={onClose} onSubmit={enviarDados}>
                 <Stack align='center'>
                     {
                         showAlert &&

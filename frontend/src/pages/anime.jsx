@@ -179,7 +179,7 @@ export default function Anime() {
             </Flex>
 
 
-            <MyModal title={'Cadastrar Anime'} action={'cadastrar'} isOpen={isOpen} onClose={onClose} onSubmit={enviarDados}>
+            <MyModal title={'Anime'} action={'cadastrar'} isOpen={isOpen} onClose={onClose} onSubmit={enviarDados}>
                 <Stack align='center'>
                     {
                         showAlert &&

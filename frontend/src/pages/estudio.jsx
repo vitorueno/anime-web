@@ -120,7 +120,7 @@ export default function Estudio() {
                 }
             </Flex>
 
-            <MyModal title={'Cadastrar Anime'} action={'cadastrar'} isOpen={isOpen} onClose={onClose} onSubmit={enviarDados}>
+            <MyModal title={'Estudio'} action={'cadastrar'} isOpen={isOpen} onClose={onClose} onSubmit={enviarDados}>
                 <Stack align='center'>
                     {
                         showAlert &&
